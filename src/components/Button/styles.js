@@ -6,7 +6,7 @@ import { fonts } from '../../common/fonts';
 export const Container = styled(RectButton)`
   height: 46px;
   border-radius: 4px;
-  background-color: #3b9eff;
+  background-color: ${colors.blue};
 
   align-items: center;
   justify-content: center;
@@ -14,7 +14,6 @@ export const Container = styled(RectButton)`
 
 export const Text = styled.Text`
   color: ${colors.white};
-  font-weight: bold;
   font-size: 16px;
   font-family: ${fonts.subTitle};
 `;
