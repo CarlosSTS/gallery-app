@@ -1,11 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
-
+import { Text } from 'react-native';
+import Background from './components/Background'
 import './config/reactotron';
 
 const App = () => {
 console.tron.log('hello')
-  return <View />;
+  return (
+    <Background>
+      <Text>olá</Text>
+    </Background>
+  )
 }
 
 export default App;
