@@ -12,7 +12,7 @@ const userLogout = () => ({
 });
 
 export const handleLogin = ({email,password}) => dispatch => {
-      auth()
+     return auth()
       .signInWithEmailAndPassword(email, password)
       .then(user => {
         const action = userLoginSuccess(user)

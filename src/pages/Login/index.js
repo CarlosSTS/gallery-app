@@ -34,9 +34,10 @@ const Login = ({handleLogin}) => {
     await handleLogin({email, password})
     setMessage('Sucesso')
      console.tron.log('Sucesso')
-    }  catch (error) {
+    } catch (error) {
       setMessage(warningLogin(error.code))
       setError(true)
+      console.tron.log('error', error)
     }finally {
       setLoading(false)
     }
