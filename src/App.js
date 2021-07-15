@@ -1,15 +1,19 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { StatusBar } from 'react-native';
+import { Provider } from 'react-redux';
+
+import './config/reactotron';
 
 import Background from './components/Background'
 import { colors } from './common/colors';
 
-import Routes from './routes'
-import './config/reactotron';
+import Routes from './routes';
+import store from './store';
 
 const App = () => {
   return (
+    <Provider store={store}>
     <Background>
       <Routes />
       <StatusBar
@@ -18,6 +22,7 @@ const App = () => {
       translucent
       />
     </Background>
+    </Provider>
   )
 }
 
