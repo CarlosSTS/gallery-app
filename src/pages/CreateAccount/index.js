@@ -5,15 +5,17 @@ import Logo from '../../assets/logo.png';
 
 import { Container, Form, FormInput, SubmitButton, SignLink, SignLinkText } from './styles';
 
-const Login = () => {
+const CreateAccount = () => {
   const navigation = useNavigation();
+  const emailRef = useRef();
   const passwordRef = useRef();
 
-  function navigateToCreateAccount() {
-    navigation.navigate('CreateAccount')
+  function navigateToLogin() {
+    navigation.navigate('Login')
   };
+
   function handleSubmit() {
-    console.tron.log('Logou')
+    console.tron.log('Criou')
   }
 
   return (
@@ -22,12 +24,22 @@ const Login = () => {
 
       <Form>
         <FormInput
+          icon='person-outline'
+          autoCorrect={false}
+          autoCapitalize='none'
+          placeholder="Digite seu nome completo (opicional)"
+          returnKeyType='next'
+          onSubmitEditing={() => emailRef.current.focus()}
+        />
+
+        <FormInput
           icon='mail-outline'
           keyboardType='email-address'
           autoCorrect={false}
           autoCapitalize='none'
           placeholder="Digite seu e-mail"
           returnKeyType='next'
+          ref={emailRef}
           onSubmitEditing={() => passwordRef.current.focus()}
         />
 
@@ -40,15 +52,15 @@ const Login = () => {
           onSubmitEditing={handleSubmit}
         />
 
-        <SubmitButton>Entrar</SubmitButton>
+        <SubmitButton>Cadastrar</SubmitButton>
       </Form>
 
-      <SignLink onPress={navigateToCreateAccount}>
-        <SignLinkText>Criar conta gratuita</SignLinkText>
+      <SignLink onPress={navigateToLogin}>
+        <SignLinkText>Voltar para login</SignLinkText>
       </SignLink>
     </Container>
   )
 
 }
 
-export default Login;
+export default CreateAccount;
