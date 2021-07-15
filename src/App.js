@@ -1,9 +1,10 @@
 import React from 'react';
 import { View } from 'react-native';
 
-// import { Container } from './styles';
+import './config/reactotron';
 
 const App = () => {
+console.tron.log('hello')
   return <View />;
 }
 
