@@ -43,7 +43,7 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   `;
 
   export const SignLinkText = styled.Text`
-  color: ${colors.title};
+  color: ${colors.white};
   font-weight: bold;
   font-size: 16px;
   font-family: ${fonts.subTitle};
