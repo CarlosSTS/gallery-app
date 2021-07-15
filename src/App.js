@@ -1,13 +1,15 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { Text } from 'react-native';
+
 import Background from './components/Background'
+import Routes from './routes'
 import './config/reactotron';
 
 const App = () => {
 console.tron.log('hello')
   return (
     <Background>
-      <Text>olá</Text>
+      <Routes />
     </Background>
   )
 }
