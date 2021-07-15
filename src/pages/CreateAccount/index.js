@@ -15,9 +15,9 @@ const CreateAccount = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [name, setName] = useState('carloss@gmail.com')
+  const [email, setEmail] = useState('carloss@gmail.com')
+  const [password, setPassword] = useState('carloss@gmail.com')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
@@ -35,6 +35,7 @@ const CreateAccount = () => {
     try {
       await auth()
         .createUserWithEmailAndPassword(email, password)
+        setMessage('Sucesso')
       // console.tron.log('Sucesso')
     } catch (error) {
       setMessage(warningCreateAccount(error.code))

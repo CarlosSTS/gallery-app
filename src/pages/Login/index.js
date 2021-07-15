@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
-import { useNavigation } from '@react-navigation/native'
-import auth from '@react-native-firebase/auth';
+import { useNavigation } from '@react-navigation/native';
+import {connect} from 'react-redux'
+
+import {handleLogin} from '../../store/modules/user/actions';
 
 import { Image } from 'react-native'
 import Logo from '../../assets/logo.png';
@@ -8,12 +10,12 @@ import WarningMessage from '../../components/WarningMessage';
 import { warningLogin } from '../../utils/warnings'
 import { Container, Form, FormInput, SubmitButton, SignLink, SignLinkText } from './styles';
 
-const Login = () => {
+const Login = ({handleLogin}) => {
   const navigation = useNavigation();
   const passwordRef = useRef();
 
-  const [email, setEmail] = useState('carlossts826@gmail.com')
-  const [password, setPassword] = useState('carlossts826@gmail.com')
+  const [email, setEmail] = useState('carloss@gmail.com')
+  const [password, setPassword] = useState('carloss@gmail.com')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
@@ -22,26 +24,24 @@ const Login = () => {
     navigation.navigate('CreateAccount')
   };
 
-  async function handleSubmit() {
+   async function handleSubmit() {
 
     if (!email || !password) {
       return setMessage('E-mail ou senha nulos')
     }
-    setLoading(true)
     try {
-      await auth()
-        .signInWithEmailAndPassword(email, password)
-        setMessage('Sucesso')
-      // console.tron.log('Sucesso')
-    } catch (error) {
+    setLoading(true)
+    await handleLogin({email, password})
+    setMessage('Sucesso')
+     console.tron.log('Sucesso')
+    }  catch (error) {
       setMessage(warningLogin(error.code))
       setError(true)
-      //console.tron.log('error', error)
-    } finally {
+    }finally {
       setLoading(false)
     }
   }
-
+  
   return (
     <Container>
       <Image source={Logo} />
@@ -82,4 +82,4 @@ const Login = () => {
   )
 }
 
-export default Login;
+export default connect(null, {handleLogin})(Login);
