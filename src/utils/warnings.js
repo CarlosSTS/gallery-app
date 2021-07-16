@@ -4,14 +4,20 @@
  * auth/invalid-email
  */
 
-function warningLogin(errorCode) {
+function warningAccount(errorCode) {
   switch (errorCode) {
     case 'auth/wrong-password':
       return 'Senha incorreta';
     case 'auth/user-not-found':
       return 'Usuário não encontrado';
     case 'auth/invalid-email':
-      return 'E-mail inválido'
+      return 'E-mail inválido';
+    case 'auth/too-many-requests':
+      return 'Limite de requisições';
+    case 'auth/weak-password':
+      return 'Senha fraca, mínimo 6 digitos';
+    case 'auth/email-already-in-use':
+      return 'E-mail já cadastrado';
     default:
       return errorCode;
   }
@@ -21,17 +27,4 @@ function warningLogin(errorCode) {
  * auth/weak-password
  * auth/email-already-in-use'
  */
-
-function warningCreateAccount(errorCode) {
-  switch (errorCode) {
-    case 'auth/invalid-email':
-      return 'E-mail inválido';
-    case 'auth/weak-password':
-      return 'Senha fraca, mínimo 6 digitos';
-    case 'auth/email-already-in-use':
-      return 'E-mail já cadastrado';
-    default:
-      return errorCode;
-  }
-}
-export { warningLogin, warningCreateAccount }
+export { warningAccount }
