@@ -7,10 +7,10 @@ const tabBarOptions = {
     elevation: 0,
     shadowOpacity: 0,
     height: Platform.OS === 'ios' ? 90 : 64,
-    backgroundColor: colors.transparent,
-    paddingBottom: 4,
+    backgroundColor: colors.final,
+    paddingBottom: 8,
     borderTopWidth: 1,
-    borderTopColor: colors.rgbaDark
+    borderTopColor: colors.blue
   },
   iconStyle: {
     flex: 0,
@@ -19,12 +19,12 @@ const tabBarOptions = {
   },
   labelStyle: {
     height: 20,
-    fontSize: 14,
+    fontSize: 18,
     fontFamily: fonts.title,
   },
   // inactiveBackgroundColor: colors.white90,
   // activeBackgroundColor:  colors.off,
-  inactiveTintColor: colors.rgbaDark,
+  inactiveTintColor: colors.rgbaLight,
   activeTintColor: colors.white,
   keyboardHidesTabBar: true
 }

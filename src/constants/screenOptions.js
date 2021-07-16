@@ -2,17 +2,17 @@ import { fonts } from '../common/fonts'
 import { colors } from '../common/colors'
 
 const screenOptions = {
-  headerTitleAlign: "center",
+  headerTitleAlign: "left",
   headerBackTitleVisible: false,
   headerTintColor: colors.white,
   headerStyle: {
     backgroundColor: colors.initial,
     borderBottomWidth: 1,
-    borderBottomColor: colors.green,
+    borderBottomColor: colors.blue,
   },
   headerTitleStyle: {
-    fontWeight: "bold",
-    fontFamily: fonts.title
+    fontFamily: fonts.title,
+    fontSize: 16,
   },
   cardStyle: {
     backgroundColor: colors.transparent

@@ -1,11 +1,13 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import  MaterialIcons  from "react-native-vector-icons/MaterialIcons";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { colors } from '../common/colors'
 import tabBarOptions from "../constants/tabBarOptions";
 
+import Profile from "../pages/Profile";
 import Dashboard from "../pages/Dashboard";
+import Form from "../pages/Form";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -18,11 +20,11 @@ function TabRoutes() {
         name="Dashboard"
         component={Dashboard}
         options={{
-          tabBarLabel: "Perfil",
+          tabBarLabel: "Dashboard",
           tabBarIcon: ({ color, size, focused }) => {
             return (
-              <MaterialIcons
-                name="account-circle"
+              <MaterialCommunityIcons
+                name='folder-multiple-image'
                 size={size}
                 color={focused ? colors.white : color}
               />
@@ -30,7 +32,41 @@ function TabRoutes() {
           },
         }}
       />
-    
+
+      <Screen
+        name="Profile"
+        component={Profile}
+        options={{
+          tabBarLabel: "Perfil",
+          tabBarIcon: ({ color, size, focused }) => {
+            return (
+              <MaterialCommunityIcons
+                name={focused ? "account-circle" : 'account-circle-outline'}
+                size={size}
+                color={focused ? colors.white : color}
+              />
+            );
+          },
+        }}
+      />
+
+      <Screen
+        name="Form"
+        component={Form}
+        options={{
+          tabBarLabel: "Salvar",
+          tabBarIcon: ({ color, size, focused }) => {
+            return (
+              <MaterialCommunityIcons
+                name="image-plus"
+                size={size}
+                color={focused ? colors.white : color}
+              />
+            );
+          },
+        }}
+      />
+
     </Navigator>
   );
 }

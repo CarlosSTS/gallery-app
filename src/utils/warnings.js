@@ -2,6 +2,7 @@
  * auth/wrong-password
  * auth/user-not-found
  * auth/invalid-email
+ * auth/unknown
  */
 
 function warningAccount(errorCode) {
@@ -18,6 +19,8 @@ function warningAccount(errorCode) {
       return 'Senha fraca, mínimo 6 digitos';
     case 'auth/email-already-in-use':
       return 'E-mail já cadastrado';
+    case'auth/unknown':
+    return 'Autenticação desconhecida'
     default:
       return errorCode;
   }
