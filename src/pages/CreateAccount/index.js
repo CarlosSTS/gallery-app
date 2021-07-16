@@ -1,16 +1,17 @@
 import React, { useState, useRef } from 'react';
 import { useNavigation } from '@react-navigation/native'
-import auth from '@react-native-firebase/auth';
-
 import { Image } from 'react-native'
+import {connect} from 'react-redux'
+
+import {handleCreateAccount} from '../../store/modules/user/actions';
 import Logo from '../../assets/logo.png';
-import { warningCreateAccount } from '../../utils/warnings'
+import { warningAccount } from '../../utils/warnings'
 
 import WarningMessage from '../../components/WarningMessage';
 
 import { Container, Form, FormInput, SubmitButton, SignLink, SignLinkText } from './styles';
 
-const CreateAccount = () => {
+const CreateAccount = ({handleCreateAccount}) => {
   const navigation = useNavigation();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -33,12 +34,11 @@ const CreateAccount = () => {
     }
     setLoading(true)
     try {
-      await auth()
-        .createUserWithEmailAndPassword(email, password)
+      await handleCreateAccount({email, password})
         setMessage('Sucesso')
       // console.tron.log('Sucesso')
     } catch (error) {
-      setMessage(warningCreateAccount(error.code))
+      setMessage(warningAccount(error.code))
       setError(true)
       //console.tron.log('error', error)
     } finally {
@@ -99,4 +99,4 @@ const CreateAccount = () => {
   )
 }
 
-export default CreateAccount;
+export default connect(null,{handleCreateAccount})(CreateAccount);

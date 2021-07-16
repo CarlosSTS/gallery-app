@@ -7,7 +7,7 @@ import {handleLogin} from '../../store/modules/user/actions';
 import { Image } from 'react-native'
 import Logo from '../../assets/logo.png';
 import WarningMessage from '../../components/WarningMessage';
-import { warningLogin } from '../../utils/warnings'
+import { warningAccount } from '../../utils/warnings'
 import { Container, Form, FormInput, SubmitButton, SignLink, SignLinkText } from './styles';
 
 const Login = ({handleLogin}) => {
@@ -25,7 +25,6 @@ const Login = ({handleLogin}) => {
   };
 
    async function handleSubmit() {
-
     if (!email || !password) {
       return setMessage('E-mail ou senha nulos')
     }
@@ -33,9 +32,9 @@ const Login = ({handleLogin}) => {
     setLoading(true)
     await handleLogin({email, password})
     setMessage('Sucesso')
-     console.tron.log('Sucesso')
+    // console.tron.log('Sucesso')
     } catch (error) {
-      setMessage(warningLogin(error.code))
+      setMessage(warningAccount(error.code))
       setError(true)
       console.tron.log('error', error)
     }finally {
