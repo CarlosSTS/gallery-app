@@ -18,8 +18,8 @@ const App = () => {
       <Routes />
       <StatusBar
       barStyle='light-content'
-      backgroundColor={colors.transparent}
-      translucent
+      backgroundColor={colors.initial}
+      translucent={false}
       />
     </Background>
     </Provider>

@@ -5,15 +5,15 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { colors } from '../common/colors'
 import tabBarOptions from "../constants/tabBarOptions";
 
-import Profile from "../pages/Profile";
-import Dashboard from "./dashboard.stack.routes";
+import Dashboard from "../pages/Dashboard";
+import Profile from "./profile.stack.routes";
 import Form from "../pages/Form";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
 function TabRoutes() {
   return (
-    <Navigator
+    <Navigator initialRouteName='Dashboard'
       tabBarOptions={tabBarOptions}
     >
       <Screen

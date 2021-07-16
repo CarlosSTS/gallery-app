@@ -8,5 +8,6 @@ export const colors = {
     error: '#a00',
     success: '#0f0',
     blue: '#3b9eff',
-    green: '#00af00'
+    green: '#00af00',
+    black: '#000'
 }
