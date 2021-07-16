@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { ActivityIndicator } from 'react-native';
 
@@ -15,14 +16,17 @@ import { Container, SeriesList, Form, SubmitButton, ListHeader, ListFooter } fro
 const isEven = number => number % 2 === 0;
 
 const Dashboard = () => {
+  const {navigate} = useNavigation()
   const [search, setSearch] = useState('')
   const [loading, setLoaing] = useState(false)
+  
   return (
     <Background>
       <Container>
 
         <Form>
-          <Input style={{ flex: 1 }}
+          <Input 
+            style={{ flex: 1 }}
             placeholder='Digite o nome da série'
             icon='search'
             returnKeyType='send'
@@ -41,7 +45,11 @@ const Dashboard = () => {
           ListHeaderComponent={<ListHeader />}
           ListerFooterComponent={<ListFooter />}
           renderItem={({ item: series, index }) => (
-            <SerieCart series={series} isFirst={isEven(index)} />
+            <SerieCart 
+             series={series}
+             isFirst={isEven(index)}
+             onPress={() => navigate('Detail', {serie: series})}
+             />
           )}
         />
 

@@ -2,10 +2,10 @@ import React from 'react';
 
 import styles, { Container, Card, Image, Wrapper, Title } from './styles';
 
-const SerieCart = ({ series, isFirst }) => {
+const SerieCart = ({ series, isFirst,onPress }) => {
   return (
     <Container style={isFirst ? styles.first : styles.last}>
-      <Card>
+      <Card onPress={onPress}>
         <Image source={{
           uri: series.img
         }}

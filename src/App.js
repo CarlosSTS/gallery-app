@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar,LogBox } from 'react-native';
 import { Provider } from 'react-redux';
 
 import Routes from './routes';
@@ -10,6 +10,8 @@ import Background from './components/Background'
 import { colors } from './common/colors';
 
 import store from './store';
+
+LogBox.ignoreLogs(['Expected style "height: 196.36363636363637" to contain units '])
 
 const App = () => {
   return (

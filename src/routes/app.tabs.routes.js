@@ -5,7 +5,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import { colors } from '../common/colors'
 import tabBarOptions from "../constants/tabBarOptions";
 
-import Dashboard from "../pages/Dashboard";
+import Dashboard from "./dashboard.stack.routes";
 import Profile from "./profile.stack.routes";
 import Form from "../pages/Form";
 
