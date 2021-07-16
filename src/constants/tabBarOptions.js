@@ -7,7 +7,7 @@ const tabBarOptions = {
     elevation: 0,
     shadowOpacity: 0,
     height: Platform.OS === 'ios' ? 90 : 64,
-    backgroundColor: colors.final,
+    backgroundColor: colors.transparent,
     paddingBottom: 8,
     borderTopWidth: 1,
     borderTopColor: colors.blue

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native'
 
 import Auth from './auth.stack.routes';
-import App from './app.stack.routes';
+import App from './app.tabs.routes';
 
  function Routes({user}) {
   

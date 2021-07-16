@@ -6,7 +6,7 @@ import { colors } from '../common/colors'
 import tabBarOptions from "../constants/tabBarOptions";
 
 import Profile from "../pages/Profile";
-import Dashboard from "../pages/Dashboard";
+import Dashboard from "./dashboard.stack.routes";
 import Form from "../pages/Form";
 
 const { Navigator, Screen } = createBottomTabNavigator();
