@@ -35,7 +35,7 @@ const CreateAccount = ({handleCreateAccount}) => {
     setLoading(true)
     try {
       await handleCreateAccount({email, password})
-        setMessage('Sucesso')
+       // setMessage('Sucesso')
       // console.tron.log('Sucesso')
     } catch (error) {
       setMessage(warningAccount(error.code))

@@ -1,12 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native'
 
 import Auth from './auth.stack.routes';
+import App from './app.stack.routes';
 
-export default function Routes() {
+ function Routes({user}) {
+  
   return (
     <NavigationContainer>
-      <Auth />
+     {user ?  <App /> : <Auth />}
     </NavigationContainer>
   )
 }
+
+export default connect(state =>({
+user: state.user
+}))(Routes)
