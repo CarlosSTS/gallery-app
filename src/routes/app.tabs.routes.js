@@ -13,7 +13,7 @@ const { Navigator, Screen } = createBottomTabNavigator();
 
 function TabRoutes() {
   return (
-    <Navigator initialRouteName='Dashboard'
+    <Navigator initialRouteName='Form'
       tabBarOptions={tabBarOptions}
     >
       <Screen

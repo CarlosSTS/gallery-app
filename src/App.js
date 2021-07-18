@@ -11,7 +11,7 @@ import { colors } from './common/colors';
 
 import store from './store';
 
-LogBox.ignoreLogs(['Expected style "height: 196.36363636363637" to contain units '])
+LogBox.ignoreLogs(['Expected style "height:'])
 
 const App = () => {
   return (
