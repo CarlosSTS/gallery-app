@@ -23,4 +23,5 @@ export const Content = styled.Text`
   font-size: ${props => (props.content.length > 20 ? 15 : 18)}px;
   padding-left: 5px;
   font-family: ${fonts.title};
+  color: ${props => (props.color ? colors.white: colors.black)};
 `;

@@ -1,4 +1,4 @@
-import { Dimensions,StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
 import { colors } from '../../common/colors';
@@ -7,7 +7,7 @@ import { fonts } from '../../common/fonts';
 export const Container = styled.View`
   width: 50%; 
   padding: 5px;
-  height: ${Dimensions.get('window').width /2};
+  height: ${Dimensions.get('window').width / 2};
 `;
 
 export const Card = styled(RectButton)`
@@ -17,8 +17,9 @@ export const Card = styled(RectButton)`
 
 export const Image = styled.Image.attrs({
   aspectRatio: 1,
-  resizeMode:'cover'
+  resizeMode: 'cover'
 })`
+background-color: ${colors.transparent};
 `;
 
 export const Wrapper = styled.View`
@@ -41,12 +42,15 @@ font-weight: bold;
 font-family: ${fonts.subTitle};
 `;
 
-const styles =  StyleSheet.create({
+const styles = StyleSheet.create({
   first: {
     paddingLeft: 10
   },
-  last : {
+  last: {
     paddingRight: 10
+  },
+  imageOff: {
+    flex: 1,
   }
 });
 

@@ -1,4 +1,4 @@
-import React,{useRef} from 'react'
+import React,{forwardRef} from 'react'
 import { Picker } from '@react-native-picker/picker';
 
 import { colors } from '../../common/colors';
@@ -6,7 +6,7 @@ import { fonts } from '../../common/fonts';
 
 import { Container } from './styles'
 
-const SelectPicker = ({ value, onValueChange,onBlur,ref,onFocus }) => {
+const SelectPicker = ({ value, onValueChange,onBlur },ref,onFocus) => {
 
   return (
     <Container>
@@ -22,12 +22,13 @@ const SelectPicker = ({ value, onValueChange,onBlur,ref,onFocus }) => {
         numberOfLines={1}
         selectedValue={value}
         onValueChange={itemValue => onValueChange(itemValue)}>
-        <Picker.Item label="Policial" value="polece" color={colors.black} fontFamily={fonts.title} />
-        <Picker.Item label="Comédia" value="comedy" color={colors.black} fontFamily={fonts.title} />
-        <Picker.Item label="Terror" value="horror" color={colors.black} fontFamily={fonts.title} />
+        <Picker.Item label="Ação" value="Ação" color={colors.black} fontFamily={fonts.title} />
+        <Picker.Item label="Policial" value="Policial" color={colors.black} fontFamily={fonts.title} />
+        <Picker.Item label="Comédia" value="Comédia" color={colors.black} fontFamily={fonts.title} />
+        <Picker.Item label="Terror" value="Terror" color={colors.black} fontFamily={fonts.title} />
       </Picker>
     </Container>
   )
 }
 
-export default SelectPicker
+export default forwardRef(SelectPicker);

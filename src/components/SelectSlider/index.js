@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Slider from '@react-native-community/slider';
 
 import { Container, Title, Info } from './styles';
@@ -23,7 +23,7 @@ const SelectSlider = ({ value, onValueChange }) => {
           thumbTintColor={colors.blue}
           maximumValue={100}
           minimumTrackTintColor={colors.green}
-          maximumTrackTintColor={colors.error}
+          maximumTrackTintColor={colors.red}
         />
       </Container>
     </>
