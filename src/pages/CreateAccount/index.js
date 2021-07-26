@@ -1,15 +1,20 @@
 import React, { useState, useRef } from 'react';
 import { useNavigation } from '@react-navigation/native'
 import { Image } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {connect} from 'react-redux'
 
 import {handleCreateAccount} from '../../store/modules/user/actions';
+
 import Logo from '../../assets/logo.png';
+
 import { warningAccount } from '../../utils/warnings'
 
 import WarningMessage from '../../components/WarningMessage';
+import ButtonDetail from '../../components/ButtonDetail'
 
-import { Container, Form, FormInput, SubmitButton, SignLink, SignLinkText } from './styles';
+import { Container, Form, FormInput, SubmitButton } from './styles';
 
 const CreateAccount = ({handleCreateAccount}) => {
   const navigation = useNavigation();
@@ -35,6 +40,7 @@ const CreateAccount = ({handleCreateAccount}) => {
     setLoading(true)
     try {
       await handleCreateAccount({email, password})
+      AsyncStorage.setItem('@gallery:user', name)
        // setMessage('Sucesso')
       // console.tron.log('Sucesso')
     } catch (error) {
@@ -55,7 +61,8 @@ const CreateAccount = ({handleCreateAccount}) => {
           icon='person-outline'
           autoCorrect={false}
           autoCapitalize='none'
-          placeholder="Digite seu nome completo (opicional)"
+          maxLength={20}
+          placeholder="Digite seu nome (opicional)"
           returnKeyType='next'
           onSubmitEditing={() => emailRef.current.focus()}
           value={name}
@@ -63,7 +70,7 @@ const CreateAccount = ({handleCreateAccount}) => {
         />
 
         <FormInput
-          error={error}
+          error={error && message}
           icon='mail-outline'
           keyboardType='email-address'
           autoCorrect={false}
@@ -77,7 +84,7 @@ const CreateAccount = ({handleCreateAccount}) => {
         />
 
         <FormInput
-          error={error}
+          error={error && message}
           icon='lock-outline'
           secureTextEntry
           placeholder="Digite sua senha"
@@ -92,9 +99,9 @@ const CreateAccount = ({handleCreateAccount}) => {
         <SubmitButton loading={loading} onPress={handleSubmit}>Cadastrar</SubmitButton>
       </Form>
 
-      <SignLink onPress={navigateToLogin}>
-        <SignLinkText>Voltar para login</SignLinkText>
-      </SignLink>
+     <ButtonDetail onPress={navigateToLogin}>
+       Voltar para login
+     </ButtonDetail>
     </Container>
   )
 }

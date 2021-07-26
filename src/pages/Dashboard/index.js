@@ -1,42 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { ActivityIndicator } from 'react-native';
+import { connect } from 'react-redux';
 
-import { colors } from '../../common/colors';
+import { watchSeries } from '../../store/modules/series/action'
 
-import Input from '../../components/Input';
 import Background from '../../components/Background'
+import Loading from '../../components/Loading';
+import Input from '../../components/Input';
 import SerieCart from '../../components/SerieCart';
 
-import series from '../../../series.json';
-
-import { Container, SeriesList, Form, SubmitButton, ListHeader, ListFooter } from './styles';
+import {
+  Container,
+  SeriesList,
+  Form,
+  ListHeader,
+  ListFooter,
+  ContainerOff,
+  NameOff,
+  UserBookIcon
+} from './styles';
 
 const isEven = number => number % 2 === 0;
 
-const Dashboard = () => {
-  const {navigate} = useNavigation()
-  const [search, setSearch] = useState('')
-  const [loading, setLoaing] = useState(false)
-  
+const Dashboard = ({ series, watchSeries }) => {
+  const { navigate } = useNavigation()
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true)
+
+  async function loadWatchSeries() {
+    setLoading(true)
+    try {
+      await watchSeries()
+    } catch (error) {
+      console.tron.log('ERROR', error)
+    }
+  }
+
+  useEffect(() => {
+    loadWatchSeries();
+    setInterval(() => {
+      setLoading(false)
+    }, 3000)
+  }, [])
+
+  if (!series && loading) {
+    return <Loading />
+  }
+
+   if(!series && !loading) {
+    return (
+      <Background>
+        <ContainerOff>
+          <NameOff>Você ainda não cadastrou nada.{'\n'}
+            Tudo que você adicionar será salvo aqui.
+          </NameOff>
+          <UserBookIcon />
+        </ContainerOff>
+      </Background>
+    )
+  }
+
   return (
     <Background>
       <Container>
 
         <Form>
-          <Input 
+          <Input
             style={{ flex: 1 }}
             placeholder='Digite o nome da série'
             icon='search'
+            autoCorrect={false}
             returnKeyType='send'
             value={search}
             onChangeText={setSearch}
+            onSubmitEditing={() => setSearch('')}
           />
-          {loading ? <ActivityIndicator size='large' color={colors.white} />
-            : <SubmitButton>
-              <MaterialCommunityIcons name='map-marker-radius' size={24} color={colors.white} />
-            </SubmitButton>}
         </Form>
 
         <SeriesList
@@ -44,13 +82,22 @@ const Dashboard = () => {
           keyExtractor={series => String(series.id)}
           ListHeaderComponent={<ListHeader />}
           ListerFooterComponent={<ListFooter />}
-          renderItem={({ item: series, index }) => (
-            <SerieCart 
-             series={series}
-             isFirst={isEven(index)}
-             onPress={() => navigate('Detail', {serie: series})}
-             />
-          )}
+          renderItem={({ item: series, index }) => {
+            if (search !== '' && search === series.title) {
+              return <SerieCart
+                series={series}
+                isFirst={isEven(index)}
+                onPress={() => navigate('Detail', { serie: series })}
+              />
+            }
+            else if (search === '') {
+              return <SerieCart
+                series={series}
+                isFirst={isEven(index)}
+                onPress={() => navigate('Detail', { serie: series })}
+              />
+            }
+          }}
         />
 
       </Container>
@@ -58,4 +105,16 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+  const { series } = state;
+  if (!series) {
+    return { series }
+  }
+
+  const keys = Object.keys(series)
+  const seriesWithKeys = keys.map(id => {
+    return { ...series[id], id }
+  })
+  return { series: seriesWithKeys }
+}
+export default connect(mapStateToProps, { watchSeries })(Dashboard);

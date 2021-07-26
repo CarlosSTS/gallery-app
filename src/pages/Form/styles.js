@@ -2,7 +2,8 @@ import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 
 import Input from '../../components/Input';
-import Button from '../../components/Button';
+import ButtonDetail from '../../components/ButtonDetail';
+import { colors } from '../../common/colors';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
@@ -23,6 +24,8 @@ export const FormInput = styled(Input)`
 margin-bottom: 10px;
 `;
 
-export const SubmitButton = styled(Button)`
+export const SubmitButton = styled(ButtonDetail)`
 margin-top: 5px;
+width: 100%;
+background-color: ${colors.blue};
 `;

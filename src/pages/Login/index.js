@@ -1,16 +1,18 @@
 import React, { useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import {connect} from 'react-redux'
-
-import {handleLogin} from '../../store/modules/user/actions';
-
 import { Image } from 'react-native'
-import Logo from '../../assets/logo.png';
-import WarningMessage from '../../components/WarningMessage';
-import { warningAccount } from '../../utils/warnings'
-import { Container, Form, FormInput, SubmitButton, SignLink, SignLinkText } from './styles';
+import { connect } from 'react-redux'
+import { handleLogin } from '../../store/modules/user/actions';
 
-const Login = ({handleLogin}) => {
+import Logo from '../../assets/logo.png';
+import { warningAccount } from '../../utils/warnings'
+
+import WarningMessage from '../../components/WarningMessage';
+import ButtonDetail from '../../components/ButtonDetail'
+
+import { Container, Form, FormInput, SubmitButton } from './styles';
+
+const Login = ({ handleLogin }) => {
   const navigation = useNavigation();
   const passwordRef = useRef();
 
@@ -24,31 +26,31 @@ const Login = ({handleLogin}) => {
     navigation.navigate('CreateAccount')
   };
 
-   async function handleSubmit() {
+  async function handleSubmit() {
     if (!email || !password) {
       return setMessage('E-mail ou senha nulos')
     }
-    try {
     setLoading(true)
-    await handleLogin({email, password})
-    // setMessage('Sucesso')
-    // console.tron.log('Sucesso')
+    try {
+      await handleLogin({ email, password })
+      // setMessage('Sucesso')
+      // console.tron.log('Sucesso')
     } catch (error) {
       setMessage(warningAccount(error.code))
       setError(true)
       console.tron.log('error', error)
-    }finally {
+    } finally {
       setLoading(false)
     }
   }
-  
+
   return (
     <Container>
       <Image source={Logo} />
 
       <Form>
         <FormInput
-          error={error}
+          error={error && message}
           icon='mail-outline'
           keyboardType='email-address'
           autoCorrect={false}
@@ -61,25 +63,25 @@ const Login = ({handleLogin}) => {
         />
 
         <FormInput
-          error={error}
+          error={error && message}
           icon='lock-outline'
           secureTextEntry
           placeholder="Digite sua senha"
           returnKeyType='send'
           ref={passwordRef}
-          onSubmitEditing={handleSubmit}
           value={password}
           onChangeText={setPassword}
+          onSubmitEditing={handleSubmit}
         />
         {message ? <WarningMessage message={message} /> : null}
         <SubmitButton loading={loading} onPress={handleSubmit}>Entrar</SubmitButton>
       </Form>
 
-      <SignLink onPress={navigateToCreateAccount}>
-        <SignLinkText>Criar conta gratuita</SignLinkText>
-      </SignLink>
+      <ButtonDetail onPress={navigateToCreateAccount}>
+        Criar conta gratuita
+      </ButtonDetail>
     </Container>
   )
 }
 
-export default connect(null, {handleLogin})(Login);
+export default connect(null, { handleLogin })(Login);
