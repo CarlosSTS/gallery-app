@@ -2,15 +2,17 @@ import React, { useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native'
 import { connect } from 'react-redux'
+
 import { handleLogin } from '../../store/modules/user/actions';
 
+import {version} from '../../../package.json'
 import Logo from '../../assets/logo.png';
 import { warningAccount } from '../../utils/warnings'
 
 import WarningMessage from '../../components/WarningMessage';
 import ButtonDetail from '../../components/ButtonDetail'
 
-import { Container, Form, FormInput, SubmitButton } from './styles';
+import { Container, Form, FormInput, SubmitButton, Version } from './styles';
 
 const Login = ({ handleLogin }) => {
   const navigation = useNavigation();
@@ -80,6 +82,8 @@ const Login = ({ handleLogin }) => {
       <ButtonDetail onPress={navigateToCreateAccount}>
         Criar conta gratuita
       </ButtonDetail>
+
+      <Version>{version}</Version>
     </Container>
   )
 }

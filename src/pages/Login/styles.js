@@ -4,6 +4,9 @@ import styled from 'styled-components/native';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
+import { colors } from '../../common/colors';
+import { fonts } from '../../common/fonts';
+
 export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
   behavior: 'padding',
@@ -14,15 +17,22 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   padding: 0 30px;
   `;
 
-  export const Form = styled.View`
+export const Version = styled.Text`
+font-size: 16px;
+margin-top: 40px;
+color: ${colors.white};
+font-family: ${fonts.subTitle};
+`;
+
+export const Form = styled.View`
   align-self: stretch;
   margin-top: 50px;
   `;
 
-  export const FormInput = styled(Input)`
+export const FormInput = styled(Input)`
   margin-bottom: 10px;
   `;
 
-  export const SubmitButton = styled(Button)`
+export const SubmitButton = styled(Button)`
   margin-top: 5px;
   `;
