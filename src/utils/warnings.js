@@ -14,13 +14,13 @@ function warningAccount(errorCode) {
     case 'auth/invalid-email':
       return 'E-mail inválido';
     case 'auth/too-many-requests':
-      return 'Limite de requisições';
+      return 'Limite de requisições atingido';
     case 'auth/weak-password':
       return 'Senha fraca, mínimo 6 digitos';
     case 'auth/email-already-in-use':
       return 'E-mail já cadastrado';
     case'auth/unknown':
-    return 'Autenticação desconhecida'
+      return 'Erro de autenticação, tente novamente';
     default:
       return errorCode;
   }
