@@ -1,6 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { connect,useSelector } from "react-redux";
 
 import { colors } from '../common/colors'
 import tabBarOptions from "../constants/tabBarOptions";
@@ -11,7 +12,8 @@ import Form from "../pages/Form";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
-function TabRoutes() {
+function TabRoutes({series}) {
+  
   return (
     <Navigator initialRouteName="Dashboard" tabBarOptions={tabBarOptions}>
       
@@ -20,6 +22,8 @@ function TabRoutes() {
         component={Dashboard}
         options={{
           tabBarLabel: "Dashboard",
+          tabBarBadge: !series ? 0 : series.length,
+          tabBarBadgeStyle: {backgroundColor: colors.initial , color: colors.white},
           tabBarIcon: ({ color, size, focused }) => {
             return (
               <MaterialCommunityIcons
@@ -68,4 +72,16 @@ function TabRoutes() {
     </Navigator>
   );
 }
-export default TabRoutes;
+const mapStateToProps = state => {
+  const { series } = state;
+  if (!series) {
+    return { series }
+  }
+
+  const keys = Object.keys(series)
+  const seriesWithKeys = keys.map(id => {
+    return { ...series[id], id }
+  })
+  return { series: seriesWithKeys }
+}
+export default connect(mapStateToProps,null)(TabRoutes)
