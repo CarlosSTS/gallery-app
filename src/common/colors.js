@@ -9,5 +9,7 @@ export const colors = {
     success: '#0f0',
     blue: '#3b9eff',
     green: '#00af00',
-    black: '#000'
+    black: '#000',
+    red: '#d00',
+    off: '#CFD8DD'
 }
