@@ -2,21 +2,24 @@ import React from "react"
 import { createStackNavigator } from "@react-navigation/stack";
 import screenOptions from "../constants/screenOptions";
 import HeaderRight from "../components/HeaderRight";
+import {handleLogout} from '../store/modules/user/actions'
 
 import Profile from "../pages/Profile";
+import { connect } from "react-redux";
 
-const Stack = createStackNavigator();
+const { Navigator, Screen } = createStackNavigator();
 
-const App = () => {
+const App = ({handleLogout}) => {
 
   return (
-    <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name="Profile" component={Profile}
+    <Navigator screenOptions={screenOptions}>
+      <Screen name="Profile" component={Profile}
         options={{
           title: 'Bem-vindo ao Gallery App',
-          headerRight: () => <HeaderRight />
-        }} />
-    </Stack.Navigator>
+          headerRight: () => <HeaderRight onPress={handleLogout} />
+        }}
+      />
+    </Navigator>
   )
 }
-export default App
+export default connect(null,{handleLogout})(App)

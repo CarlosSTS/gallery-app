@@ -6,22 +6,20 @@ import { colors } from "../common/colors";
 import Login from "../pages/Login";
 import CreateAccount from "../pages/CreateAccount";
 
-const Stack = createStackNavigator();
+const { Navigator, Screen } = createStackNavigator();
 
 const Auth = () => {
 
   return (
-    <Stack.Navigator screenOptions={{
+    <Navigator screenOptions={{
       headerShown: false,
       cardStyle: {
         backgroundColor: colors.transparent
       }
     }}>
-      <Stack.Screen name="Login" component={Login}
-      />
-      <Stack.Screen name="CreateAccount" component={CreateAccount}
-      />
-    </Stack.Navigator>
+      <Screen name="Login" component={Login} />
+      <Screen name="CreateAccount" component={CreateAccount} />
+    </Navigator>
   )
 }
 export default Auth;

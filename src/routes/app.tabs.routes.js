@@ -13,9 +13,8 @@ const { Navigator, Screen } = createBottomTabNavigator();
 
 function TabRoutes() {
   return (
-    <Navigator initialRouteName='Form'
-      tabBarOptions={tabBarOptions}
-    >
+    <Navigator initialRouteName="Dashboard" tabBarOptions={tabBarOptions}>
+      
       <Screen
         name="Dashboard"
         component={Dashboard}
@@ -53,18 +52,17 @@ function TabRoutes() {
       <Screen
         name="Form"
         component={Form}
-        options={{
-          tabBarLabel: "Salvar",
-          tabBarIcon: ({ color, size, focused }) => {
-            return (
+        options={({route}) => {
+          const {params} =route;
+          return({
+          tabBarLabel: params  ? "Salvar" : "Adicionar",
+          tabBarIcon: ({ color, size, focused }) => 
               <MaterialCommunityIcons
-                name="image-plus"
+                name={params ? 'content-save-edit': "image-plus"}
                 size={size}
                 color={focused ? colors.white : color}
               />
-            );
-          },
-        }}
+        })}}
       />
 
     </Navigator>
