@@ -6,6 +6,7 @@ import HeaderLeft from '../components/HeaderLeft'
 
 import Dashboard from "../pages/Dashboard";
 import Detail from '../pages/Detail';
+import EditForm from '../pages/EditForm';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -16,11 +17,19 @@ const Routes = () => {
         options={{ headerShown: false }}
       />
       <Screen name="Detail" component={Detail}
-        options={({ route }) => ({ 
+        options={({ route }) => ({
           title: route.params.serie.title || 'Essa série não possui título',
-          headerLeft: () => <HeaderLeft  />
+          headerLeft: () => <HeaderLeft />
         })}
       />
+
+      <Screen name="EditForm" component={EditForm}
+        options={({ route }) => ({
+          title: `Editar: ${route.params.serie.title}` || 'Essa série não possui título',
+          headerLeft: () => <HeaderLeft />
+        })}
+      />
+
     </Navigator>
   )
 }

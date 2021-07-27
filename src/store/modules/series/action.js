@@ -30,7 +30,7 @@ export const deleteSerie = serie => {
         'Deletar',
         `Deseja deletar ${serie.title}`,
         [{
-          text: 'Não',
+          text: 'Não 🙏🏻',
           onPress: () => {
             resolve(false)
           },
@@ -46,7 +46,7 @@ export const deleteSerie = serie => {
 
               resolve(true)
             } catch (error) {
-              Alert.alert(`Aviso','Não conseguimos deletar: ${serie.title}`)
+              Alert.alert(`Aviso','Não conseguimos deletar: ${serie.title} 😢`)
               reject(error)
             }
           },

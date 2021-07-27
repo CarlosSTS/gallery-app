@@ -56,7 +56,7 @@ export const handleLogout = ({ }) => dispatch => {
       "Tem certeza que deseja sair ?",
       [
         {
-          text: "Não",
+          text: "Não 🙏🏻",
           style: "cancel",
           onPress: () => {
             resolve(false)

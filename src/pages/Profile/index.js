@@ -34,7 +34,7 @@ const Profile = ({ series,handleResetPassword }) => {
     try {
       await 
        handleResetPassword({ email })
-       Alert.alert('Sucesso','Enviaremos um e-mail para que possa redefinir sua senha')
+       Alert.alert('Sucesso','Enviaremos um e-mail para que possa redefinir sua senha  😄')
     } catch (error) {
       setMessage(warningAccount(error.code))
       setError(true)
@@ -61,7 +61,7 @@ const Profile = ({ series,handleResetPassword }) => {
           text: "Não",
           style: "cancel"
         },
-        { text: "Sim", onPress: () => fetchCopiedText() }
+        { text: "Sim ✏️", onPress: () => fetchCopiedText() }
       ], {
       cancelable: false
     })

@@ -37,7 +37,7 @@ const Detail = ({ deleteSerie }) => {
           <LongLine label="Descrição" content={serie.description || 'Não possui descrição'} />
         </Info>
         <ButtonEdit onPress={() => {
-          navigate('Form', { serie })
+          navigate('EditForm', { serie })
         }}>
           Editar
         </ButtonEdit>

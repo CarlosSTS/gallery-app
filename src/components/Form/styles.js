@@ -1,8 +1,8 @@
 import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 
-import Input from '../../components/Input';
-import ButtonDetail from '../../components/ButtonDetail';
+import Input from '../Input';
+import ButtonDetail from '../ButtonDetail';
 import { colors } from '../../common/colors';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
@@ -28,4 +28,9 @@ export const SubmitButton = styled(ButtonDetail)`
 margin-top: 5px;
 width: 100%;
 background-color: ${colors.blue};
+`;
+
+export const ErasedButton = styled(ButtonDetail)`
+align-self:center;
+background-color: ${colors.transparent};
 `;

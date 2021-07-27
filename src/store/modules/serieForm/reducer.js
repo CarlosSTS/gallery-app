@@ -20,9 +20,7 @@ export default function serieForm(state = INITIAL_STATE, action) {
     case SET_WHOLE_SERIE:
       return action.serie;
 
-    case RESET_FORM:
-      return INITIAL_STATE;
-      
+      case RESET_FORM:
     case SERIE_SAVED_SUCCESS:
       return INITIAL_STATE;
 

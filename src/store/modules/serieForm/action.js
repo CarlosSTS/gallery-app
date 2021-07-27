@@ -1,3 +1,4 @@
+import { Alert } from "react-native";
 import database from "@react-native-firebase/database";
 import auth from '@react-native-firebase/auth';
 
@@ -24,6 +25,40 @@ export const RESET_FORM = 'RESET_FORM';
 export const resetForm = () => ({
   type: RESET_FORM
 })
+
+
+export const handleResetForm = ({ }) => {
+  return dispatch => {
+    return new Promise((resolve, reject) => {
+      Alert.alert(
+        'Limpar',
+        `Deseja realmente limpar todos os dados ?`,
+        [
+          {
+            text: "Não",
+            style: "cancel",
+            onPress: () => {
+              resolve(false)
+            },
+          },
+          {
+            text: "Sim 🧹", onPress: () => {
+              try {
+              const action = resetForm()
+              dispatch(action)
+              resolve(true)
+            }catch (error){
+              Alert.alert('Aviso', 'Não conseguimos limpar o formulário 😢')
+              reject(error)
+             }
+            }
+          }
+        ], {
+        cancelable: false
+      })
+    })
+  }
+}
 
 export const saveSerie = serie => {
   const { currentUser } = auth();
