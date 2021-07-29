@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Alert } from 'react-native';
 
-import { connect } from 'react-redux';
+import {useDispatch,useSelector, connect } from 'react-redux';
 
 import {
   setField,
@@ -13,21 +13,17 @@ import {
 
 import Form from '../../components/Form';
 
-const EditForm = ({
-  serieForm,
-  setField,
-  saveSerie,
-  setWholeSerie,
-  handleResetForm
-}) => {
+const EditForm = ({ setField, handleResetForm }) => {
 
   const { navigate } = useNavigation()
-  const { params } = useRoute()
+  const { params } = useRoute();
+  const serieForm = useSelector(state =>  state.serieForm)
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (params && params.serie) {
-      return setWholeSerie(params.serie)
+      return dispatch(setWholeSerie(params.serie))
     }
   }, [params]);
 
@@ -38,7 +34,7 @@ const EditForm = ({
 
     setLoading(true)
     try {
-      await saveSerie(serieForm)
+      await dispatch(saveSerie(serieForm))
       navigate('Dashboard', { screen: 'Dashboard' })
       Alert.alert('Sucesso', `Salvamos ${serieForm.title} na sua galeria 😄`)
 
@@ -49,8 +45,7 @@ const EditForm = ({
       setLoading(false)
     }
   }
-
-
+  
   return <Form
     serieForm={serieForm}
     setField={setField}
@@ -61,16 +56,9 @@ const EditForm = ({
   />;
 }
 
-function mapStateToProps(state) {
-  return {
-    serieForm: state.serieForm
-  }
-}
 const mapDispatchToProps = {
   setField,
-  saveSerie,
-  setWholeSerie,
   handleResetForm
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditForm);
+export default connect(null, mapDispatchToProps)(EditForm);

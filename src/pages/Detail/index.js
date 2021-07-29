@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRoute } from '@react-navigation/native'
 import { useNavigation } from '@react-navigation/native'
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { deleteSerie } from '../../store/modules/series/action'
 
@@ -11,16 +11,22 @@ import LongLine from '../../components/LongLine';
 
 import Logo from '../../assets/logo.png'
 
-import { Container, Image, Info, ButtonEdit, ButtonDelete } from './styles';
+import {
+  Container,
+  Image,
+  Info,
+  ButtonEdit,
+  ButtonDelete
+} from './styles';
 
-const Detail = ({ deleteSerie }) => {
+const Detail = ({ }) => {
   const { navigate } = useNavigation();
   const { serie } = useRoute().params;
-
+  const dispatch = useDispatch()
   //console.tron.log(serie)
 
   async function deletedSerie() {
-    const hasDeleted = await deleteSerie(serie)
+    const hasDeleted = await dispatch(deleteSerie(serie))
     if (hasDeleted) {
       navigate('Dashboard', { screen: 'Dashboard' })
     }
@@ -50,4 +56,4 @@ const Detail = ({ deleteSerie }) => {
   )
 }
 
-export default connect(null, { deleteSerie })(Detail);
+export default Detail;

@@ -2,10 +2,9 @@ import React, { useState, useRef } from 'react';
 import { useNavigation } from '@react-navigation/native'
 import { Image } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux'
 
-import {connect} from 'react-redux'
-
-import {handleCreateAccount} from '../../store/modules/user/actions';
+import { handleCreateAccount } from '../../store/modules/user/actions';
 
 import Logo from '../../assets/logo.png';
 
@@ -14,16 +13,22 @@ import { warningAccount } from '../../utils/warnings'
 import WarningMessage from '../../components/WarningMessage';
 import ButtonDetail from '../../components/ButtonDetail'
 
-import { Container, Form, FormInput, SubmitButton } from './styles';
+import {
+  Container,
+  Form,
+  FormInput,
+  SubmitButton
+} from './styles';
 
-const CreateAccount = ({handleCreateAccount}) => {
+const CreateAccount = ({ }) => {
   const navigation = useNavigation();
+  const dispatch = useDispatch()
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const [name, setName] = useState('carloss@gmail.com')
-  const [email, setEmail] = useState('carloss@gmail.com')
-  const [password, setPassword] = useState('carloss@gmail.com')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
@@ -39,9 +44,9 @@ const CreateAccount = ({handleCreateAccount}) => {
     }
     setLoading(true)
     try {
-      await handleCreateAccount({email, password})
+      await dispatch(handleCreateAccount({ email, password }))
       AsyncStorage.setItem('@gallery:user', name)
-       // setMessage('Sucesso')
+      // setMessage('Sucesso')
       // console.tron.log('Sucesso')
     } catch (error) {
       setMessage(warningAccount(error.code))
@@ -99,11 +104,11 @@ const CreateAccount = ({handleCreateAccount}) => {
         <SubmitButton loading={loading} onPress={handleSubmit}>Cadastrar</SubmitButton>
       </Form>
 
-     <ButtonDetail onPress={navigateToLogin}>
-       Voltar para login
-     </ButtonDetail>
+      <ButtonDetail onPress={navigateToLogin}>
+        Voltar para login
+      </ButtonDetail>
     </Container>
   )
 }
 
-export default connect(null,{handleCreateAccount})(CreateAccount);
+export default CreateAccount;

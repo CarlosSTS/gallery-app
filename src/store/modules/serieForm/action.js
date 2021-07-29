@@ -26,7 +26,6 @@ export const resetForm = () => ({
   type: RESET_FORM
 })
 
-
 export const handleResetForm = ({ }) => {
   return dispatch => {
     return new Promise((resolve, reject) => {

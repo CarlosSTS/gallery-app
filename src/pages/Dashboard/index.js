@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { connect } from 'react-redux';
+import { connect,useDispatch,useSelector } from 'react-redux';
 
 import { watchSeries } from '../../store/modules/series/action'
 
@@ -22,25 +22,25 @@ import {
 
 const isEven = number => number % 2 === 0;
 
-const Dashboard = ({ series, watchSeries }) => {
+const Dashboard = ({ series }) => {
   const { navigate } = useNavigation()
+  const dispatch = useDispatch()
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true)
 
   async function loadWatchSeries() {
     setLoading(true)
     try {
-      await watchSeries()
+      await dispatch(watchSeries())
     } catch (error) {
       console.tron.log('ERROR', error)
+    }finally {
+      setLoading(false)
     }
   }
 
   useEffect(() => {
     loadWatchSeries();
-    setInterval(() => {
-      setLoading(false)
-    }, 3000)
   }, [])
 
   if (!series && loading) {
@@ -117,4 +117,4 @@ const mapStateToProps = state => {
   })
   return { series: seriesWithKeys }
 }
-export default connect(mapStateToProps, { watchSeries })(Dashboard);
+export default connect(mapStateToProps, null)(Dashboard);

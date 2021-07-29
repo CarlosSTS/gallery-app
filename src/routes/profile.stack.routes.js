@@ -1,11 +1,13 @@
 import React from "react"
 import { createStackNavigator } from "@react-navigation/stack";
-import screenOptions from "../constants/screenOptions";
-import HeaderRight from "../components/HeaderRight";
+import { connect } from "react-redux";
+
 import {handleLogout} from '../store/modules/user/actions'
 
+import screenOptions from "../constants/screenOptions";
+import HeaderRight from "../components/HeaderRight";
+
 import Profile from "../pages/Profile";
-import { connect } from "react-redux";
 
 const { Navigator, Screen } = createStackNavigator();
 

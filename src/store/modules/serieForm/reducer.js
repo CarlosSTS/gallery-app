@@ -1,4 +1,9 @@
-import { SET_FIELD, SERIE_SAVED_SUCCESS, SET_WHOLE_SERIE, RESET_FORM } from './action';
+import {
+  SET_FIELD,
+  SERIE_SAVED_SUCCESS,
+  SET_WHOLE_SERIE,
+  RESET_FORM
+} from './action';
 
 const INITIAL_STATE = {
   id: null,
@@ -20,7 +25,7 @@ export default function serieForm(state = INITIAL_STATE, action) {
     case SET_WHOLE_SERIE:
       return action.serie;
 
-      case RESET_FORM:
+    case RESET_FORM:
     case SERIE_SAVED_SUCCESS:
       return INITIAL_STATE;
 

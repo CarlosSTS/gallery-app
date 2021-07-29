@@ -1,22 +1,29 @@
 import React, { useRef, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import { handleLogin } from '../../store/modules/user/actions';
 
-import {version} from '../../../package.json'
+import { version } from '../../../package.json'
 import Logo from '../../assets/logo.png';
 import { warningAccount } from '../../utils/warnings'
 
 import WarningMessage from '../../components/WarningMessage';
 import ButtonDetail from '../../components/ButtonDetail'
 
-import { Container, Form, FormInput, SubmitButton, Version } from './styles';
+import {
+  Container,
+  Form,
+  FormInput,
+  SubmitButton,
+  Version
+} from './styles';
 
-const Login = ({ handleLogin }) => {
+const Login = ({ }) => {
   const navigation = useNavigation();
   const passwordRef = useRef();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState('carloss@gmail.com')
   const [password, setPassword] = useState('carloss@gmail.com')
@@ -34,7 +41,7 @@ const Login = ({ handleLogin }) => {
     }
     setLoading(true)
     try {
-      await handleLogin({ email, password })
+      await dispatch(handleLogin({ email, password }))
       // setMessage('Sucesso')
       // console.tron.log('Sucesso')
     } catch (error) {
@@ -88,4 +95,4 @@ const Login = ({ handleLogin }) => {
   )
 }
 
-export default connect(null, { handleLogin })(Login);
+export default Login;

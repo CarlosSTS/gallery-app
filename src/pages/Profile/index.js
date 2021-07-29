@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, Clipboard } from 'react-native'
-import { connect, useSelector } from 'react-redux'
+import { useDispatch,connect, useSelector } from 'react-redux'
 
 import { handleResetPassword } from '../../store/modules/user/actions';
 import { warningAccount } from '../../utils/warnings'
@@ -18,8 +18,9 @@ import {
   Form
 } from './styles'
 
-const Profile = ({ series,handleResetPassword }) => {
+const Profile = ({ series }) => {
   const user = useSelector(state => state.user.user);
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
@@ -33,7 +34,7 @@ const Profile = ({ series,handleResetPassword }) => {
     setLoading(true)
     try {
       await 
-       handleResetPassword({ email })
+      dispatch(handleResetPassword({ email }))
        Alert.alert('Sucesso','Enviaremos um e-mail para que possa redefinir sua senha  😄')
     } catch (error) {
       setMessage(warningAccount(error.code))
@@ -108,4 +109,4 @@ const mapStateToProps = state => {
   return { series: seriesWithKeys }
 }
 
-export default connect(mapStateToProps, { handleResetPassword })(Profile);
+export default connect(mapStateToProps, null)(Profile);

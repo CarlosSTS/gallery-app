@@ -7,6 +7,7 @@ import App from './app.tabs.routes';
 
 export default function Routes() {
   const user = useSelector(state => state.user)
+ // console.tron.log('@USER', user)
   return (
     <NavigationContainer>
      {user ?  <App /> : <Auth />}

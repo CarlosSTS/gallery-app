@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigation, useIsFocused } from '@react-navigation/native';
-import { connect } from 'react-redux'
+import {useSelector, connect,useDispatch } from 'react-redux'
 import { Alert } from 'react-native'
 
 import {
@@ -12,14 +12,16 @@ import {
 
 import Form from '../../components/Form';
 
-const CreateForm = ({ serieForm, setField, saveSerie, resetForm,handleResetForm }) => {
+const CreateForm = ({ setField,handleResetForm }) => {
   const { navigate } = useNavigation()
-  const  isFocused = useIsFocused();
+  const isFocused = useIsFocused();
+  const serieForm = useSelector(state =>  state.serieForm)
+  const dispatch = useDispatch()
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if(!isFocused)
-    return resetForm()
+    return dispatch(resetForm())
   }, [isFocused]);
 
   async function handleSaveSerie() {
@@ -29,9 +31,9 @@ const CreateForm = ({ serieForm, setField, saveSerie, resetForm,handleResetForm 
 
     setLoading(true)
     try {
-      await saveSerie(serieForm)
+      await dispatch(saveSerie(serieForm))
       navigate('Dashboard', { screen: 'Dashboard' })
-      Alert.alert('Sucesso', `Salvamos ${serieForm.title} na sua galeria 😄`)
+      Alert.alert('Sucesso', `Adicionamos ${serieForm.title} na sua galeria 😄`)
 
     } catch (error) {
       Alert.alert('Aviso', 'Não conseguimos salvar sua série 😢')
@@ -49,17 +51,10 @@ const CreateForm = ({ serieForm, setField, saveSerie, resetForm,handleResetForm 
   loading={loading}
   />
 }
-function mapStateToProps(state) {
-  return {
-    serieForm: state.serieForm
-  }
-}
 
 const mapDispatchToProps = {
   setField,
-  saveSerie,
-  resetForm,
   handleResetForm
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateForm);
+export default connect(null, mapDispatchToProps)(CreateForm);
