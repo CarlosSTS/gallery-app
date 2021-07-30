@@ -93,6 +93,7 @@ const CreateAccount = ({ }) => {
           icon='lock-outline'
           secureTextEntry
           placeholder="Digite sua senha"
+          autoCapitalize='none'
           returnKeyType='send'
           ref={passwordRef}
           onSubmitEditing={handleSubmit}

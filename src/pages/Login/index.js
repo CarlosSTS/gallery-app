@@ -25,8 +25,8 @@ const Login = ({ }) => {
   const passwordRef = useRef();
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState('carloss@gmail.com')
-  const [password, setPassword] = useState('carloss@gmail.com')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [message, setMessage] = useState('')
@@ -75,6 +75,7 @@ const Login = ({ }) => {
           error={error && message}
           icon='lock-outline'
           secureTextEntry
+          autoCapitalize='none'
           placeholder="Digite sua senha"
           returnKeyType='send'
           ref={passwordRef}
