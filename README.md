@@ -7,6 +7,7 @@
 > Exemplo: validação de rotas para saber se usuário está logado ou não.
 
 > Uso de componentes como: picker e slider.
+
 > Uso de fonts externas ([Roboto](https://fonts.google.com/specimen/Roboto)) do google fonts.
 
 ## módulos
