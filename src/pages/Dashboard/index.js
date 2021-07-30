@@ -33,7 +33,7 @@ const Dashboard = ({ series }) => {
     try {
       await dispatch(watchSeries())
     } catch (error) {
-      console.tron.log('ERROR', error)
+      // console.tron.log('ERROR', error)
     }finally {
       setLoading(false)
     }

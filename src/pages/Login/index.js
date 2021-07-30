@@ -47,7 +47,7 @@ const Login = ({ }) => {
     } catch (error) {
       setMessage(warningAccount(error.code))
       setError(true)
-      console.tron.log('error', error)
+     // console.tron.log('error', error)
     } finally {
       setLoading(false)
     }
