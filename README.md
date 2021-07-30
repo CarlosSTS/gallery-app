@@ -39,8 +39,6 @@ O app contém os seguintes módulos:
 ![Foto do App detalhe](https://github.com/CarlosSTS/gallery-app/blob/master/images/detail.jpg)
 ![Foto do App deletar](https://github.com/CarlosSTS/gallery-app/blob/master/images/delete.jpg)
 ![Foto do App editar](https://github.com/CarlosSTS/gallery-app/blob/master/images/edit.jpg)
-![Foto do App 4](https://github.com/CarlosSTS/gallery-app/blob/master/images/dashboard.jpg)
-![Foto do App 5](https://github.com/CarlosSTS/gallery-app/blob/master/images/dashboard.jpg)
 
 ## MOBILE
 RODANDO O PROJETO MOBILE
