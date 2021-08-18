@@ -46,7 +46,7 @@ RODANDO O PROJETO MOBILE
 * yarn install => para instalar Dependências do projeto
 * yarn start => para inicializar o projeto
 * yarn android => para executar o projeto no emulador android
-* yarn ios => Para executar no emulador iOS
+* yarn ios => para executar no emulador iOS
 
 ## Feito por Carlos Ferreira
 * [Github](https://www.github.com/CarlosSTS)
