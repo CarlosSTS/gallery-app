@@ -1,4 +1,4 @@
-# gallery-app 
+# Gallery-app 
 
 1. Aplicativo focado no armazenamento de mídia como filmes, séries e animes.
 2. O aplicativo trabalha com firebase para banco de dados e servidor.
