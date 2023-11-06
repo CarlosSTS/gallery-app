@@ -28,10 +28,10 @@ O app contém os seguintes módulos:
 * [Explicação do aplicativo](https://www.linkedin.com/posts/carlos-ferreira-4b2ba219a_js-reactnative-redux-activity-6802983240601747456-2iY6)
 
 ## Páginas do app
-![Foto do App login](https://github.com/CarlosSTS/gallery-app/blob/master/images/login.jpg)
-![Foto do App criarConta](https://github.com/CarlosSTS/gallery-app/blob/master/images/createAccount.jpg)
-![Foto do App perfil](https://github.com/CarlosSTS/gallery-app/blob/master/images/profile.jpg)
-![Foto do App copiar](https://github.com/CarlosSTS/gallery-app/blob/master/images/copy.jpg)
+![Foto do App login](https://github.com/CarlosSTS/gallery-app/blob/master/images/login.jpeg)
+![Foto do App criarConta](https://github.com/CarlosSTS/gallery-app/blob/master/images/createAccount.jpeg)
+![Foto do App perfil](https://github.com/CarlosSTS/gallery-app/blob/master/images/profile.jpeg)
+![Foto do App copiar](https://github.com/CarlosSTS/gallery-app/blob/master/images/copy.jpeg)
 ![Foto do App criarVazio](https://github.com/CarlosSTS/gallery-app/blob/master/images/createNull.jpg)
 ![Foto do App picker](https://github.com/CarlosSTS/gallery-app/blob/master/images/picker.jpg)
 ![Foto do App criar](https://github.com/CarlosSTS/gallery-app/blob/master/images/create.jpg)
