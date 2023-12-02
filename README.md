@@ -2,8 +2,7 @@
 
 1. Aplicativo focado no armazenamento de mídia como filmes, séries e animes.
 2. O aplicativo trabalha com firebase para banco de dados e servidor.
-3. Uso de AsyncStorage para guardar informações pessoais do usuário como foto de perfil e nome.
-4. Uso de redux, redux-persist, redux-Thunk para manipulação de dados.
+3. Uso de redux, redux-persist, redux-Thunk para manipulação de dados.
    > Exemplo: validação de rotas para saber se usuário está logado ou não.
 
 > Uso de componentes como: picker e slider.
