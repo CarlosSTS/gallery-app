@@ -19,7 +19,7 @@ import {
 } from './styles'
 
 const Profile = ({ series }) => {
-  const user = useSelector(state => state.user.user);
+  const user = useSelector(state => state.user?.user);
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('')
@@ -53,16 +53,16 @@ const Profile = ({ series }) => {
   }
 
   const copyToClipboard = () => {
-    Clipboard.setString(user.email)
+    Clipboard.setString(user?.email)
     Alert.alert(
       'Sucesso e-mail copiado.',
-      `Seu e-mail é: ${user.email}, gostaria de aplicá-lo na recuperação de senha ?`,
+      `Seu e-mail é: ${user?.email}, gostaria de aplicá-lo na recuperação de senha ?`,
       [
         {
           text: "Não",
           style: "cancel"
         },
-        { text: "Sim ✏️", onPress: () => fetchCopiedText() }
+        { text: "Sim", onPress: () => fetchCopiedText() }
       ], {
       cancelable: false
     })
@@ -73,7 +73,7 @@ const Profile = ({ series }) => {
       <Header />
       <Container>
         <Info>Informações adicionais</Info>
-        <Line label="E-mail" content={user.email} color icon='content-copy' onPress={copyToClipboard} />
+        <Line label="E-mail" content={user?.email} color icon='content-copy' onPress={copyToClipboard} />
         <Line label="Total de" content={`${!series ? 0 : series.length} itens na galeria`} color />
         <Info>Recuperar senha</Info>
         <Form>

@@ -1,59 +1,65 @@
-import React, { useState, useRef } from 'react';
-import { useNavigation } from '@react-navigation/native'
-import { Image } from 'react-native'
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useDispatch } from 'react-redux'
-
-import { handleCreateAccount } from '../../store/modules/user/actions';
+import React, { useState, useRef, useCallback } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { Alert, Image } from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 import Logo from '../../assets/logo.png';
 
-import { warningAccount } from '../../utils/warnings'
+import { warningAccount } from '../../utils/warnings';
 
 import WarningMessage from '../../components/WarningMessage';
-import ButtonDetail from '../../components/ButtonDetail'
+import ButtonDetail from '../../components/ButtonDetail';
 
-import {
-  Container,
-  Form,
-  FormInput,
-  SubmitButton
-} from './styles';
+import { Container, Form, FormInput, SubmitButton } from './styles';
 
 const CreateAccount = ({ }) => {
   const navigation = useNavigation();
-  const dispatch = useDispatch()
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
-  const [message, setMessage] = useState('')
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+  const [message, setMessage] = useState('');
 
-  function navigateToLogin() {
-    navigation.navigate('Login')
-  };
+  const navigateToLogin = useCallback(() => {
+    navigation.navigate('Login');
+  }, [navigation]);
 
   async function handleSubmit() {
-
-    if (!email || !password) {
-      return setMessage('E-mail ou senha nulos')
+    if (!name) {
+      setMessage('Nome obrigatório');
+      return;
     }
-    setLoading(true)
+    if (!email) {
+      setMessage('E-mail obrigatório');
+      return;
+    }
+    if (!password) {
+      setMessage('Senha obrigatório');
+      return;
+    }
+
+    setLoading(true);
     try {
-      await dispatch(handleCreateAccount({ email, password }))
-      AsyncStorage.setItem('@gallery:user', name)
-      // setMessage('Sucesso')
-      // console.tron.log('Sucesso')
+      await auth().createUserWithEmailAndPassword(email, password);
+      await auth().currentUser?.updateProfile({
+        displayName: name,
+      });
+      Alert.alert('Usuário cadastrado com sucesso', 'Você já pode fazer login na aplicação', [
+        {
+          text: 'Vamos lá',
+          onPress: navigateToLogin,
+          style: 'default'
+        }
+      ], { cancelable: false })
     } catch (error) {
-      setMessage(warningAccount(error.code))
-      setError(true)
-      //console.tron.log('error', error)
+      setMessage(warningAccount(error.code));
+      setError(true);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
@@ -63,12 +69,12 @@ const CreateAccount = ({ }) => {
 
       <Form>
         <FormInput
-          icon='person-outline'
+          icon="person-outline"
           autoCorrect={false}
-          autoCapitalize='none'
+          autoCapitalize="none"
           maxLength={20}
           placeholder="Digite seu nome (opicional)"
-          returnKeyType='next'
+          returnKeyType="next"
           onSubmitEditing={() => emailRef.current.focus()}
           value={name}
           onChangeText={setName}
@@ -76,12 +82,12 @@ const CreateAccount = ({ }) => {
 
         <FormInput
           error={error && message}
-          icon='mail-outline'
-          keyboardType='email-address'
+          icon="mail-outline"
+          keyboardType="email-address"
           autoCorrect={false}
-          autoCapitalize='none'
+          autoCapitalize="none"
           placeholder="Digite seu e-mail"
-          returnKeyType='next'
+          returnKeyType="next"
           ref={emailRef}
           onSubmitEditing={() => passwordRef.current.focus()}
           value={email}
@@ -90,11 +96,11 @@ const CreateAccount = ({ }) => {
 
         <FormInput
           error={error && message}
-          icon='lock-outline'
+          icon="lock-outline"
           secureTextEntry
           placeholder="Digite sua senha"
-          autoCapitalize='none'
-          returnKeyType='send'
+          autoCapitalize="none"
+          returnKeyType="send"
           ref={passwordRef}
           onSubmitEditing={handleSubmit}
           value={password}
@@ -102,14 +108,14 @@ const CreateAccount = ({ }) => {
         />
         {message ? <WarningMessage message={message} /> : null}
 
-        <SubmitButton loading={loading} onPress={handleSubmit}>Cadastrar</SubmitButton>
+        <SubmitButton loading={loading} onPress={handleSubmit}>
+          Cadastrar
+        </SubmitButton>
       </Form>
 
-      <ButtonDetail onPress={navigateToLogin}>
-        Voltar para login
-      </ButtonDetail>
+      <ButtonDetail onPress={navigateToLogin}>Voltar para login</ButtonDetail>
     </Container>
-  )
-}
+  );
+};
 
 export default CreateAccount;
