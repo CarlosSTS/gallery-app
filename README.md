@@ -31,33 +31,33 @@ O app contém os seguintes módulos:
 
 <table>
   <tr>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2Flogin.png?alt=media&token=affb51f6-39e2-43fb-80bb-25fb246c0ede" alt="Foto do App login" width="360" /></td>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2FcreateAccount.png?alt=media&token=b8f845b8-6c28-45f5-a3c9-253f7a4cad0f" alt="Foto do App criarConta" width="360" /></td>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2Fprofile.png?alt=media&token=5c3d6713-0ed4-4f6a-9989-ea73581b41ca" alt="Foto do App perfil" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429515/github_projects/gallery-app/login.png" alt="Foto do App login" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429485/github_projects/gallery-app/createAccount.png" alt="Foto do App criarConta" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429522/github_projects/gallery-app/profile.png" alt="Foto do App perfil" width="360" /></td>
 </tr>
 </table>
 
 <table>
   <tr>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2Fcopy.png?alt=media&token=4aa6e72c-eeee-45f8-aecf-787500b12b73" alt="Foto do App copiar" width="360" /></td>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2FcreateNull.png?alt=media&token=3b93c764-9fb2-456a-a3f8-b951145caaa4" alt="Foto do App criarVazio" width="360" /></td>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2Fpicker.png?alt=media&token=1313a88b-371e-4065-b568-da105137fa73" alt="Foto do App picker" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429477/github_projects/gallery-app/copy.png" alt="Foto do App copiar" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429488/github_projects/gallery-app/createNull.png" alt="Foto do App criarVazio" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429518/github_projects/gallery-app/picker.png" alt="Foto do App picker" width="360" /></td>
 </tr>
 </table>
 
 <table>
   <tr>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2Fcreate.png?alt=media&token=80ab0107-7c5f-44ce-9964-e47ef610c518" alt="Foto do App criar" width="360" /></td>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2FdashboardNull.png?alt=media&token=770c133d-8345-40cd-acf3-baec04bed997" alt="Foto do App dashboardNulo" width="360" /></td>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2Fdashboard.png?alt=media&token=48b1f657-48b8-4921-8a3b-772491cedcc5" alt="Foto do App dashboard" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429481/github_projects/gallery-app/create.png" alt="Foto do App criar" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429495/github_projects/gallery-app/dashboardNull.png" alt="Foto do App dashboardNulo" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429491/github_projects/gallery-app/dashboard.png" alt="Foto do App dashboard" width="360" /></td>
 </tr>
 </table>
 
 <table>
   <tr>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2Fdetail.png?alt=media&token=74b8a708-d901-4ca0-b630-b25627c2112f" alt="Foto do App detalhe" width="360" /></td>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2Fdelete.png?alt=media&token=8851be7e-648a-4c5b-9509-03976bdfe736" alt="Foto do App deletar" width="360" /></td>
-<td><img src="https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fgallery-app%2Fedit.png?alt=media&token=a06d68d2-3549-4f96-801a-fd24e588ac82" alt="Foto do App editar" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429503/github_projects/gallery-app/detail.png" alt="Foto do App detalhe" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429499/github_projects/gallery-app/delete.png" alt="Foto do App deletar" width="360" /></td>
+<td><img src="https://res.cloudinary.com/dbw8igay3/image/upload/v1766429507/github_projects/gallery-app/edit.png" alt="Foto do App editar" width="360" /></td>
 </tr>
 </table>
 
@@ -73,5 +73,5 @@ RODANDO O PROJETO MOBILE
 ## Feito por Carlos Ferreira
 
 - [Github](https://www.github.com/CarlosSTS)
-- [Email](mailto://carlossts826@gmail.com)
+- [Email](mailto://carlossts.dev@gmail.com)
 - [LinkedIn](https://www.linkedin.com/in/carlos-ferreira-4b2ba219a/)
